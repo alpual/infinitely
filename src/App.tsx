@@ -4,7 +4,20 @@ import AsteroidNav from './components/AsteroidNav';
 import AsteroidSizeVis from './components/AsteroidSizeVis';
 import NeoClass from './components/NeoClass';
 
-class App extends React.Component {
+
+export interface IAsteroidStatus {
+  asteroidNum: number;
+  asteroidSize: number;
+}
+
+class App extends React.Component<{}, IAsteroidStatus> {
+  constructor(props:any, context:any) {
+    super(props,context)
+
+    this.state = { asteroidNum:0, asteroidSize:0 }
+  }
+
+
   public render() {
     return (
       <div className="appWrapper">
@@ -12,7 +25,16 @@ class App extends React.Component {
         <div id="NeoJson">
             <NeoClass API_Key="UmwJQ1PsgKzUDRfptPJH1T9CbveNXUj4rH39sjEI"/> 
           </div>
-          <AsteroidSizeVis size={187.85} height={600} width={600}/>
+
+          <AsteroidSizeVis size={this.state.asteroidSize} 
+          height={600} 
+          width={600}
+          asteroidNum={this.state.asteroidNum}
+          
+          increment={
+            () => this.setState({...this.state, asteroidNum: this.state.asteroidNum+1})// tslint:disable-line
+          }
+          />
         <AsteroidNav/>
       </div>
     );
