@@ -26,16 +26,19 @@ class App extends React.Component<{}, IAsteroidStatus> {
             <NeoClass API_Key="UmwJQ1PsgKzUDRfptPJH1T9CbveNXUj4rH39sjEI"/> 
           </div>
 
-          <AsteroidSizeVis size={this.state.asteroidSize} 
-          height={600} 
-          width={600}
-          asteroidNum={this.state.asteroidNum}
-          
-          increment={
-            () => this.setState({...this.state, asteroidNum: this.state.asteroidNum+1})// tslint:disable-line
-          }
+          <AsteroidSizeVis 
+            size={this.state.asteroidSize} 
+            height={600} 
+            width={600}
+            asteroidNum={this.state.asteroidNum}
           />
-        <AsteroidNav/>
+          <AsteroidNav 
+            asteroidNum={this.state.asteroidNum}
+            asteroidSize={this.state.asteroidSize}
+            increment={
+              () => this.setState({...this.state, asteroidSize: this.state.asteroidSize+5}) /* tslint:disable-line */
+            }
+        />
       </div>
     );
   }

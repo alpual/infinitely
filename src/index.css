@@ -1,5 +1,5 @@
 :root {
-	--spaceColor: #041229;
+	--spaceColor: #010A18;
 	--medColor: #0D2345;
 	--textColor: #D4E3FA;
 }
@@ -41,4 +41,5 @@ h1 {
 	stroke: var(--textColor);
 	stroke-width: 4px;
 	fill: var(--medColor);
+	transition:all 300ms ease-in-out;
 }
