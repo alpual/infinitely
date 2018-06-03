@@ -1,5 +1,5 @@
 :root {
-	--spaceColor: #010A18;
+	--spaceColor: #00050C;
 	--medColor: #0D2345;
 	--textColor: #D4E3FA;
 }
@@ -20,6 +20,7 @@ button {
 	border: 4px solid var(--textColor);
 	padding: 1rem 2rem;
 	margin: .5rem;
+	font-family: "Anonymous Pro", monospace;
 }
 button:hover {
 	background-color: #ffffff33;
@@ -29,13 +30,44 @@ h1 {
 	letter-spacing: .1rem;
 }
 
+.grid {
+
+}
+
+.headsUp,
+.asteroidNav {
+  grid-column: 1 / 4;
+}
+
 .appWrapper {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 6rem auto 5rem;
+	grid-gap: .25rem;
+}
+.appWrapper * {
+	display: flex;
+	justify-content: center;
+}
+
+.vis {
+	border: 1px solid var(--textColor);
+	padding: 1rem;
+	overflow: hidden;
+	max-width: 768px;
+	max-height: 768px;
+}
+
+
+
+#NeoJson {
+	display: none;
+}
+#sizeVis {
+	
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-}
-#NeoJson {
-	display: none;
 }
 .asteroidContainer .asteroid {
 	stroke: var(--textColor);
