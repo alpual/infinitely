@@ -43,7 +43,7 @@ class App extends React.Component<{}, IAsteroidStatus> {
           }
         />
         <div id="NeoJson">
-          <NeoClass API_Key="UmwJQ1PsgKzUDRfptPJH1T9CbveNXUj4rH39sjEI"/> 
+          <NeoClass/> 
         </div>
       </div>
     );

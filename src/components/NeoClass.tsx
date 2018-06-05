@@ -1,9 +1,8 @@
 import axios from 'axios';
 import * as React from 'react';
 
-export interface IProps {
-  API_Key: string;
-}
+/*export interface IProps {
+}*/
 
 export interface INeoStatus {
 	neo_json: string;
@@ -11,12 +10,10 @@ export interface INeoStatus {
 };
 
 
-class NeoClass extends React.Component<IProps, INeoStatus > {
-	public API_KEY: string
+class NeoClass extends React.Component<{}, INeoStatus > {
 
 	constructor (props: any) {
 	  super(props);
-	  this.API_KEY = this.props.API_Key;
 	  this.state= {
 	  	neo_json: "no-json-yet",
 	  	status: 0
@@ -24,7 +21,7 @@ class NeoClass extends React.Component<IProps, INeoStatus > {
 	}
 	
 	public render() {
-		const query = "https://api.nasa.gov/neo/rest/v1/feed/today?detailed=true&api_key=" + this.API_KEY;
+		const query = "http://infinitely.space/neo-data/today.json";
 
 		// tslint:disable-next-line
 		axios.get(query).then(
@@ -37,7 +34,6 @@ class NeoClass extends React.Component<IProps, INeoStatus > {
 		return (
 		  <div className="hello">
 			<div className="greeting">
-			  Hello {this.API_KEY}<br/>
 			  Query Status: {this.state.status}<br/>
 			  Query retured: {this.state.neo_json}
 			</div>
