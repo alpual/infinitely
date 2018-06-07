@@ -21,15 +21,34 @@ class NeoClass extends React.Component<{}, INeoStatus > {
 	}
 	
 	public render() {
-		const query = "http://infinitely.space/neo-data/today.json";
-
+		// const query = "http://infinitely.space/neo-data/today.json";
+		let query = "http://localhost:3000/neo-data/test.json";
+		if (process.env.NODE_ENV === "production") {
+			query = "http://infinitely.space/neo-data/today.json"
+		}
 		// tslint:disable-next-line
 		axios.get(query).then(
+					response => this.setState( { 
+						neo_json: response.request.response, 
+						status: response.status	
+					})
+		);
+
+
+		/* axios.get(query).then(
 			response => this.setState( { 
-				neo_json: response.request.response, 
+				neo_json: response, 
 				status: response.status	
 			})
-		);
+		).catch(response => {
+			axios.get("http://localhost:3000/neo-data/test.json")
+				.then(
+					response => this.setState( { 
+						neo_json: response, 
+						status: response.status	
+					})
+				);
+		}); */
 
 		return (
 		  <div className="hello">
